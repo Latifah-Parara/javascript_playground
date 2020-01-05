@@ -18,3 +18,7 @@ Vue.component('cat-component', {
   </div>
   `
 })
+
+export default {
+  name: 'cat-component'
+}

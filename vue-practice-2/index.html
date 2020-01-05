@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id='main'>
+      {{header}} <!-- vanilla way of putting in an attribute -->
+      <div v-if='tutorialMode'>
+        <p v-text='header'> <!-- does that same thing as the {{}} above -->
+        <p v-html='header'> <!-- does that same thing as the above, but also renders html tag effects -->
+        <p v-once='header'> <!-- renders something once, even if dynamically updated -->
+      </div>
+      <div v-if='display'>
+        <input v-model='email' :class='[email.length < 5 ? "red" : "green"]'> <!--v-model is two way binding to a variable in data attribute. If false, doesn't render to DOM at all. :class is shorthand for v-bind:class, and assigns classes based on conditions. Can also use object syntax, such as :class={red: email.length < 5, green: email.length > 5}. I find that the ternary displays smoother. -->
+      </div>
+      <div v-show='spanish'> <!--if this is false, still renders to DOM but with CSS 'display none' -->
+        <button onclick='alert("translated")' :disabled='email.length < 5'> <!--disabled is shorthand for v-bind:disabled which disables button if email isn't long enough -->
+          {{msg}}
+        </button>
+        <h2>Top 7 Spanish Words</h2>
+        <li v-for='word in bwords'>{{ word }} </li>
+      </div>
+    </div>
+    <script src='app.js'></script>
+  </body>
+</html>

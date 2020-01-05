@@ -22,7 +22,7 @@ Vue.component('cat-component', {
 
 const app = new Vue ({
   el: '#root', //where the vue is mounted. Can be removed if you wanna mount later on.
-  data: {
+  data: { //note that child components cannot have objects directly passed in as data. Only root component can. Child nodes need to use 'return'
     greeting: 'Chckeej nugges',
     msg: `You loaded this page on ${new Date()}`,
     picture: 'desperate1-onion-head-emoticon.gif',
